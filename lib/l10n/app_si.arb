@@ -1,0 +1,58 @@
+{
+  "@@locale": "si",
+
+  "language": "සිංහල",
+  "@language": {
+    "description": "The current language"
+  },
+
+  "appTitle": "සරල කාර්ය ලැයිස්තුව",
+  "@appTitle": {
+    "description": "Title of the application"
+  },
+
+  "todoHint": "අලුත් කාර්යයක් එක් කරන්න",
+  "@todoHint": {
+    "description": "Hint text for the new todo input field"
+  },
+
+  "snackTaskEmpty": "කාර්යය හිස්ව තැබිය නොහැක",
+  "@snackTaskEmpty": {
+    "description": "Shown when user tries to save an empty task"
+  },
+
+  "snackDeleted": "කාර්යය මකා දමන ලදි: {task}",
+  "@snackDeleted": {
+    "description": "Shown when a task is deleted",
+    "placeholders": {
+      "task": {
+        "type": "String"
+      }
+    }
+  },
+
+  "snackUpdated": "කාර්යය යාවත්කාලීන කරන ලදි",
+  "@snackUpdated": {
+    "description": "Shown when a task is updated"
+  },
+
+  "updateTaskTitle": "කාර්යය යාවත්කාලීන කරන්න",
+  "@updateTaskTitle": {
+    "description": "Title of the bottom sheet for editing a task"
+  },
+
+  "editTaskHint": "ඔබගේ කාර්යය සංස්කරණය කරන්න",
+  "@editTaskHint": {
+    "description": "Hint text for editing a task"
+  },
+
+  "cancel": "අවලංගු කරන්න",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+
+  "save": "සුරකින්න",
+  "@save": {
+    "description": "Save button"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "@@locale": "en",
+
+  "language": "English",
+  "@language": {
+    "description": "The current language"
+  },
+
+  "appTitle": "Simple Todo",
+  "@appTitle": {
+    "description": "Title of the application"
+  },
+
+  "todoHint": "Add a new todo item",
+  "@todoHint": {
+    "description": "Hint text for the new todo input field"
+  },
+
+  "snackTaskEmpty": "Task cannot be empty",
+  "@snackTaskEmpty": {
+    "description": "Shown when user tries to save an empty task"
+  },
+
+  "snackDeleted": "Deleted: {task}",
+  "@snackDeleted": {
+    "description": "Shown when a task is deleted",
+    "placeholders": {
+      "task": {
+        "type": "String"
+      }
+    }
+  },
+
+  "snackUpdated": "Task updated",
+  "@snackUpdated": {
+    "description": "Shown when a task is updated"
+  },
+
+  "updateTaskTitle": "Update Task",
+  "@updateTaskTitle": {
+    "description": "Title of the bottom sheet for editing a task"
+  },
+
+  "editTaskHint": "Edit your task",
+  "@editTaskHint": {
+    "description": "Hint text for editing a task"
+  },
+
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+
+  "save": "Save",
+  "@save": {
+    "description": "Save button"
+  }
+}

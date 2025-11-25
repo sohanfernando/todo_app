@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/utils/todo_list.dart';
+import '../l10n/l10n.dart';
+import '../l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key, required this.onChangeLocale});
+
+  final void Function(Locale) onChangeLocale;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -25,10 +29,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   void saveNewTask() {
+    final l10n = AppLocalizations.of(context)!;
+
     if (_controller.text.trim().isEmpty) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text('Task cannot be empty')));
+      ).showSnackBar(SnackBar(content: Text(l10n.snackTaskEmpty)));
       return;
     }
     setState(() {
@@ -38,17 +44,20 @@ class _HomePageState extends State<HomePage> {
   }
 
   void deleteTask(int index) {
+    final l10n = AppLocalizations.of(context)!;
     final removed = toDoList[index][0] as String;
+
     setState(() {
       toDoList.removeAt(index);
     });
     ScaffoldMessenger.of(
       context,
-    ).showSnackBar(SnackBar(content: Text('Deleted: $removed')));
+    ).showSnackBar(SnackBar(content: Text(l10n.snackDeleted(removed))));
   }
 
   // ====== UPDATE TASK ======
   void editTask(int index) async {
+    final l10n = AppLocalizations.of(context)!;
     final initialText = toDoList[index][0] as String;
     final controller = TextEditingController(text: initialText);
 
@@ -65,7 +74,6 @@ class _HomePageState extends State<HomePage> {
             left: 20,
             right: 20,
             top: 20,
-            // Move above keyboard
             bottom: MediaQuery.of(ctx).viewInsets.bottom + 20,
           ),
           child: Column(
@@ -81,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Text(
-                'Update Task',
+                l10n.updateTaskTitle,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
@@ -95,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                 textInputAction: TextInputAction.done,
                 onSubmitted: (_) => Navigator.pop(ctx, controller.text.trim()),
                 decoration: InputDecoration(
-                  hintText: 'Edit your task',
+                  hintText: l10n.editTaskHint,
                   filled: true,
                   fillColor: Colors.deepPurple.shade50,
                   border: OutlineInputBorder(
@@ -106,9 +114,9 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(14),
                     borderSide: BorderSide(color: Colors.deepPurple.shade200),
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(14),
-                    borderSide: const BorderSide(
+                  focusedBorder: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(14)),
+                    borderSide: BorderSide(
                       color: Colors.deepPurple,
                       width: 1.4,
                     ),
@@ -127,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(14),
                         ),
                       ),
-                      child: const Text('Cancel'),
+                      child: Text(l10n.cancel),
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -150,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                         foregroundColor: Colors.white,
                       ),
                       icon: const Icon(Icons.check),
-                      label: const Text('Save'),
+                      label: Text(l10n.save),
                     ),
                   ),
                 ],
@@ -169,14 +177,33 @@ class _HomePageState extends State<HomePage> {
       });
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text('Task updated')));
+      ).showSnackBar(SnackBar(content: Text(l10n.snackUpdated)));
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Simple Todo')),
+      appBar: AppBar(
+        title: Text(l10n.appTitle),
+        actions: [
+          PopupMenuButton<Locale>(
+            icon: const Icon(Icons.language),
+            onSelected: (locale) => widget.onChangeLocale(locale),
+            itemBuilder: (context) {
+              return L10n.all.map((locale) {
+                final code = locale.languageCode;
+                return PopupMenuItem<Locale>(
+                  value: locale,
+                  child: Text('${L10n.getFlag(code)}  ${code.toUpperCase()}'),
+                );
+              }).toList();
+            },
+          ),
+        ],
+      ),
       body: Column(
         children: [
           // Input row
@@ -194,7 +221,7 @@ class _HomePageState extends State<HomePage> {
                         textInputAction: TextInputAction.done,
                         onSubmitted: (_) => saveNewTask(),
                         decoration: InputDecoration(
-                          hintText: 'Add a new todo item',
+                          hintText: l10n.todoHint,
                           filled: true,
                           fillColor: Colors.white,
                           contentPadding: const EdgeInsets.symmetric(

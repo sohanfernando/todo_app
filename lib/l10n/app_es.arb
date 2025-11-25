@@ -1,0 +1,14 @@
+{
+  "@@locale": "es",
+
+  "language": "Español",
+  "appTitle": "Lista de Tareas",
+  "todoHint": "Añade una nueva tarea",
+  "snackTaskEmpty": "La tarea no puede estar vacía",
+  "snackDeleted": "Eliminado: {task}",
+  "snackUpdated": "Tarea actualizada",
+  "updateTaskTitle": "Actualizar tarea",
+  "editTaskHint": "Edita tu tarea",
+  "cancel": "Cancelar",
+  "save": "Guardar"
+}

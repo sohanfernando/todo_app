@@ -1,0 +1,14 @@
+{
+  "@@locale": "fr",
+
+  "language": "Français",
+  "appTitle": "Liste de tâches",
+  "todoHint": "Ajouter une nouvelle tâche",
+  "snackTaskEmpty": "La tâche ne peut pas être vide",
+  "snackDeleted": "Supprimé : {task}",
+  "snackUpdated": "Tâche mise à jour",
+  "updateTaskTitle": "Modifier la tâche",
+  "editTaskHint": "Modifiez votre tâche",
+  "cancel": "Annuler",
+  "save": "Enregistrer"
+}
