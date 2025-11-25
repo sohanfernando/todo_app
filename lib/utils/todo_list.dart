@@ -13,9 +13,15 @@ class TodoList extends StatelessWidget {
 
   final String taskName;
   final bool taskCompleted;
-  final Function(bool?)? onChanged;
-  final Function(BuildContext)? deleteFunction;
-  final Function(BuildContext)? editFunction;
+
+  /// Called when the checkbox value changes.
+  final ValueChanged<bool?>? onChanged;
+
+  /// Called when the user taps the delete action.
+  final void Function(BuildContext)? deleteFunction;
+
+  /// Called when the user taps the edit action.
+  final void Function(BuildContext)? editFunction;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +93,6 @@ class TodoList extends StatelessWidget {
                   ),
                 ),
               ),
-              // Quick inline edit icon (optional tap)
               IconButton(
                 tooltip: 'Edit',
                 onPressed: () => editFunction?.call(context),
